@@ -1,0 +1,26 @@
+{
+  "$schema": "https://homemade.dev/schemas/latest/config.json",
+  "install": ["bun install"],
+  "services": {
+    "app": {
+      "cmd": "cd apps/app && exec bunx vite serve --host 0.0.0.0 --port \"$PORT\" --strictPort",
+      "port": 5173,
+      "url": true,
+      "displayName": "App (Vite dev server)",
+      "order": 0
+    },
+    "api": {
+      "cmd": "cd apps/api && exec bun run dev",
+      "port": 8787,
+      "displayName": "API",
+      "order": 1
+    },
+    "site": {
+      "cmd": "cd apps/web && exec bunx astro dev --host 0.0.0.0 --port \"$PORT\"",
+      "port": 4321,
+      "url": true,
+      "displayName": "Marketing site (Astro)",
+      "order": 2
+    }
+  }
+}
